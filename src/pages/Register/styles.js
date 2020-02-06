@@ -18,6 +18,8 @@ export const PhotoView = styled.TouchableOpacity`
 export const PhotoImage = styled.Image.attrs({ source: account })`
   width: 110px;
   height: 110px;
+  border-width: 1px;
+  border-color: #01a643;
 `;
 
 export const InputWrapper = styled.View`

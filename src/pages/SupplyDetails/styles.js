@@ -22,7 +22,7 @@ export const ProductPhoto = styled.Image`
   border-radius: 33px;
   margin-right: 20px;
   border-width: 1px;
-  border-color: #ccc;
+  border-color: #01a643;
 `;
 export const ProductName = styled.Text`
   color: #01a643;
@@ -46,7 +46,7 @@ export const ProducerPhoto = styled.Image`
   height: 66px;
   border-radius: 33px;
   border-width: 1px;
-  border-color: #ccc;
+  border-color: #01a643;
   margin-right: 15px;
 `;
 export const ProducerInfoView = styled.View`

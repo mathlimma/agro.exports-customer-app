@@ -27,4 +27,6 @@ export const ProductImage = styled.Image`
   height: 80px;
   width: 80px;
   border-radius: 40px;
+  border-width: 1px;
+  border-color: #01a643;
 `;

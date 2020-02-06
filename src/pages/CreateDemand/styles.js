@@ -60,7 +60,8 @@ export const ProductImage = styled.Image`
   height: 50px;
   width: 50px;
   border-radius: 25px;
-  border: 1px solid #707070;
+  border-width: 1px;
+  border-color: #01a643;
 `;
 
 export const ProductText = styled.Text`

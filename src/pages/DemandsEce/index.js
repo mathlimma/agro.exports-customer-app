@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { withNavigationFocus } from 'react-navigation';
+import { Text } from 'react-native';
 import AppBar from '../../components/AppBar';
 import DemandItem from '../../components/DemandItem';
 import api from '../../services/api';
@@ -14,6 +15,8 @@ import {
   ButtonView,
   Separator,
   Icon,
+  EmptyView,
+  EmptyText,
 } from './styles';
 
 function Demand({ navigation, isFocused }) {
@@ -35,6 +38,7 @@ function Demand({ navigation, isFocused }) {
 
     getSupplies();
   }, [isFocused]);
+  console.log(demands.length);
   return (
     <Container>
       <AppBar title="Demandas" />
@@ -48,15 +52,28 @@ function Demand({ navigation, isFocused }) {
               <CreateDemandText>Criar Demanda</CreateDemandText>
             </CreateDemandButton>
           </ButtonView>
-          <DemandText>Suas Demandas</DemandText>
-          <DemandList
-            data={demands}
-            renderItem={({ item }) => (
-              <DemandItem navigation={navigation} {...item} key={item._id} />
-            )}
-            keyExtractor={item => String(item._id)}
-            ItemSeparatorComponent={() => <Separator />}
-          />
+
+          {demands.length === 0 ? (
+            <EmptyView>
+              <EmptyText>Você não possui demandas cadastradas</EmptyText>
+            </EmptyView>
+          ) : (
+            <>
+              <DemandText>Suas Demandas</DemandText>
+              <DemandList
+                data={demands}
+                renderItem={({ item }) => (
+                  <DemandItem
+                    navigation={navigation}
+                    {...item}
+                    key={item._id}
+                  />
+                )}
+                keyExtractor={item => String(item._id)}
+                ItemSeparatorComponent={() => <Separator />}
+              />
+            </>
+          )}
         </Content>
       )}
     </Container>

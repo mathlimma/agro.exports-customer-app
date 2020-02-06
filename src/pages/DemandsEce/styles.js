@@ -15,6 +15,15 @@ export const Content = styled.View`
 export const ButtonView = styled.View`
   padding-top: 20px;
 `;
+export const EmptyView = styled.View`
+  margin-top: 20px;
+`;
+
+export const EmptyText = styled.Text`
+  font-weight: bold;
+  font-size: 16px;
+  color: #ef6262;
+`;
 
 export const CreateDemandButton = styled.TouchableOpacity`
   height: 54px;

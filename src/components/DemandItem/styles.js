@@ -26,6 +26,8 @@ export const PhotoView = styled.Image`
   height: 60px;
   border-radius: 30px;
   margin-right: 10px;
+  border-width: 1px;
+  border-color: #01a643;
 `;
 
 export const InfoView = styled.View`
