@@ -1,16 +1,40 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  background: rgba(131, 237, 123, 0.2);
+  width: 285px;
+  border-radius: 10px;
+  padding: 10px;
+  flex-direction: row;
+  margin-bottom: 5px;
+`;
 
-export const ProductView = styled.View``;
+export const ActionViewWrapper = styled.TouchableOpacity``;
 
-export const PhotoView = styled.Image``;
+export const ProductView = styled.TouchableOpacity`
+  flex: 9;
+  flex-direction: row;
+`;
 
-export const InfoView = styled.View``;
+export const PhotoView = styled.Image`
+  width: 84px;
+  height: 84px;
+  border-radius: 42px;
+  margin-right: 10px;
+`;
 
-export const NameText = styled.Text``;
+export const InfoView = styled.View`
+  justify-content: center;
+`;
 
-export const ActionsView = styled.View``;
+export const NameText = styled.Text`
+  font-size: 18px;
+`;
+
+export const ActionsView = styled.View`
+  justify-content: space-between;
+  flex: 1;
+`;
 
 export const ActionView = styled.View``;
 

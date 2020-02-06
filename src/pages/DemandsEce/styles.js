@@ -4,6 +4,7 @@ import { FlatList } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
+  background: #fff;
 `;
 
 export const Content = styled.View`
@@ -38,7 +39,6 @@ export const DemandText = styled.Text`
 `;
 
 export const DemandList = styled(FlatList).attrs({
-  horizontal: true,
   showsHorizontalScrollIndicator: false,
 })`
   padding: 0 10px;

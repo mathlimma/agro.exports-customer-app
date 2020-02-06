@@ -7,15 +7,19 @@ import {
   NameText,
   ActionsView,
   ActionView,
+  ActionViewWrapper,
   ActionIcon,
 } from './styles';
 import trash from '../../assets/icons/trash.png';
 import edit from '../../assets/icons/edit.png';
 
-export default function DemandItem({ product_id }) {
+export default function DemandItem({ product_id, navigation, _id }) {
+  function handlePress() {
+    navigation.push('DemandSuppliesList', { demand_id: _id });
+  }
   return (
     <Container>
-      <ProductView>
+      <ProductView onPress={handlePress}>
         <PhotoView source={{ uri: product_id.photo_id.url }} />
         <InfoView>
           <NameText>{product_id.name}</NameText>
@@ -24,7 +28,9 @@ export default function DemandItem({ product_id }) {
 
       <ActionsView>
         <ActionView>
-          <ActionIcon source={edit} />
+          <ActionViewWrapper>
+            <ActionIcon source={edit} />
+          </ActionViewWrapper>
         </ActionView>
 
         <ActionView>
