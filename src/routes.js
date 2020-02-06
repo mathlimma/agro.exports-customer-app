@@ -6,14 +6,11 @@ import { Image } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import Auth from './pages/Auth';
 import Login from './pages/Login';
-import Demand from './pages/Demand';
-import DemandDetails from './pages/DemandDetails';
-
+import Notification from './pages/Notification';
 import Profile from './pages/Profile';
-import Supply from './pages/Supply';
-import AddSupply from './pages/AddSupply';
-import CreateSupply from './pages/CreateSupply';
 import Register from './pages/Register';
+import DemandEce from './pages/DemandsEce';
+
 import bell from './assets/icons/bell.png';
 import bellGreen from './assets/icons/bell-green.png';
 import company from './assets/icons/company.png';
@@ -21,28 +18,10 @@ import campanyGreen from './assets/icons/company-green.png';
 import deal from './assets/icons/deal.png';
 import dealGreen from './assets/icons/deal-green.png';
 
-const SupplyStack = createStackNavigator(
-  {
-    Supply: {
-      screen: Supply,
-    },
-    AddSupply: {
-      screen: AddSupply,
-    },
-    CreateSupply: {
-      screen: CreateSupply,
-    },
-  },
-  { headerMode: 'none' }
-);
-
 const DemandStack = createStackNavigator(
   {
-    Demand: {
-      screen: Demand,
-    },
-    DemandDetails: {
-      screen: DemandDetails,
+    DemandEce: {
+      screen: DemandEce,
     },
   },
   { headerMode: 'none' }
@@ -72,8 +51,8 @@ const App = createBottomTabNavigator(
         ),
       },
     },
-    SupplyStack: {
-      screen: SupplyStack,
+    Notification: {
+      screen: Notification,
       navigationOptions: {
         tabBarIcon: ({ focused }) => (
           <Image

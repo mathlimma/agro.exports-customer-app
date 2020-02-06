@@ -19,8 +19,30 @@ export default function AddSupply({ navigation }) {
   useEffect(() => {
     async function getNotifications() {
       try {
-        const response = await api.get('/product'); // pegar notificaçoes aqui
+        // const response = await api.get('/product'); // pegar notificaçoes aqui
 
+        const response = {
+          data: [
+            {
+              text: ' joaozinho recusou seu pedido',
+              photo_id: {
+                url: 'jhdsfksdhfdsh',
+              },
+            },
+            {
+              text: ' Mariazinha aceitou seu pedido',
+              photo_id: {
+                url: 'jhdsfksdhfdsh',
+              },
+            },
+            {
+              text: ' aguinha aceitou seu pedido',
+              photo_id: {
+                url: 'jhdsfksdhfdsh',
+              },
+            },
+          ],
+        };
         setNotification(response.data);
         setloading(false);
       } catch (error) {
@@ -34,11 +56,11 @@ export default function AddSupply({ navigation }) {
     // abrir whatsapp aqui
   }
 
-  function NotificationItem() {
+  function NotificationItem(item) {
     <NotificationButton onPress={() => handlePress(item)}>
       <ProducerImage source={{ uri: item.photo_id.url }} />
       <NotificationTextView>
-        <NotificationText> {item.name}</NotificationText>
+        <NotificationText> {item.text}</NotificationText>
       </NotificationTextView>
     </NotificationButton>;
   }

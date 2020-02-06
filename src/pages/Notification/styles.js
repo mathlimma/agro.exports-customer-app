@@ -10,7 +10,7 @@ export const Content = styled.View`
   padding: 20px;
 `;
 
-export const ProductButton = styled.TouchableOpacity`
+export const NotificationButton = styled.TouchableOpacity`
   padding: 10px;
   flex-direction: row;
   align-items: center;
@@ -23,7 +23,7 @@ export const NotificationTextView = styled.View`
   align-items: center;
 `;
 
-export const ProductImage = styled.Image`
+export const ProducerImage = styled.Image`
   height: 50px;
   width: 50px;
   border-radius: 25px;
@@ -51,9 +51,3 @@ export const ProductText = styled.Text`
 `;
 
 export const NotificationList = styled(FlatList)``;
-
-NotificationButton,
-ProducerImage,
-,
-,
-,
