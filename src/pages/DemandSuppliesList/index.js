@@ -30,9 +30,10 @@ export default function DemandSuppliesList({ navigation }) {
   }, []);
 
   function Supplyitem(item) {
+    console.log(item);
     return (
       <SupplyContent>
-        <PhotoView source={item.producer_id.avatar_id.url} />
+        <PhotoView source={{ uri: item.producer_id.avatar_id.url }} />
         <InfoView>
           <NameText>{item.producer_id.name}</NameText>
           <CityText>{item.producer_id.city}</CityText>
@@ -43,7 +44,7 @@ export default function DemandSuppliesList({ navigation }) {
 
   return (
     <Container>
-      <AppBar />
+      <AppBar title="Lista de Ofertas" />
       {loading ? (
         <Loading />
       ) : (

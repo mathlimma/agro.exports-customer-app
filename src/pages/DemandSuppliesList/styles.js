@@ -3,6 +3,7 @@ import { FlatList } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   flex: 1;
+  background: #fff;
 `;
 
 export const Content = styled.View`
@@ -12,14 +13,28 @@ export const Content = styled.View`
 export const SuppliesList = styled(FlatList)``;
 
 export const SupplyContent = styled.View`
+  flex-direction: row;
   width: 335px;
-  height: 83px;
+  margin-top: 20px;
   background: rgba(131, 237, 123, 0.6);
+  padding: 20px;
 `;
 
-export const PhotoView = styled.Image``;
+export const PhotoView = styled.Image`
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-right: 10px;
+`;
 
-export const InfoView = styled.View``;
+export const InfoView = styled.View`
+  justify-content: center;
+`;
 
-export const NameText = styled.Text``;
-export const CityText = styled.Text``;
+export const NameText = styled.Text`
+  font-size: 14px;
+`;
+export const CityText = styled.Text`
+  font-size: 14px;
+  color: #707070;
+`;
