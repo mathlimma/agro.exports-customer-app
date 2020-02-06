@@ -17,6 +17,11 @@ export default function DemandItem({ product_id, navigation, _id }) {
   function handlePress() {
     navigation.push('DemandSuppliesList', { demand_id: _id });
   }
+
+  function handleEdit() {
+    navigation.push('EditDemand');
+  }
+
   return (
     <Container>
       <ProductView onPress={handlePress}>
@@ -28,7 +33,7 @@ export default function DemandItem({ product_id, navigation, _id }) {
 
       <ActionsView>
         <ActionView>
-          <ActionViewWrapper>
+          <ActionViewWrapper onPress={handleEdit}>
             <ActionIcon source={edit} />
           </ActionViewWrapper>
         </ActionView>
