@@ -19,7 +19,7 @@ export default function DemandItem({ product_id, navigation, _id }) {
   }
 
   function handleEdit() {
-    navigation.push('EditDemand');
+    navigation.push('EditDemand', { _id });
   }
 
   return (

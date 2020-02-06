@@ -12,6 +12,7 @@ import Register from './pages/Register';
 import DemandEce from './pages/DemandsEce';
 import AddDemand from './pages/AddDemand';
 import CreateDemand from './pages/CreateDemand';
+import EditDemand from './pages/EditDemand';
 import DemandSuppliesList from './pages/DemandSuppliesList';
 import bell from './assets/icons/bell.png';
 import bellGreen from './assets/icons/bell-green.png';
@@ -31,6 +32,9 @@ const DemandStack = createStackNavigator(
     },
     CreateDemand: {
       screen: CreateDemand,
+    },
+    EditDemand: {
+      screen: EditDemand,
     },
     DemandSuppliesList,
     SupplyDetails,
