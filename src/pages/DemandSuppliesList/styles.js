@@ -12,7 +12,7 @@ export const Content = styled.View`
 
 export const SuppliesList = styled(FlatList)``;
 
-export const SupplyContent = styled.View`
+export const SupplyContent = styled.TouchableOpacity`
   flex-direction: row;
   width: 335px;
   margin-top: 20px;

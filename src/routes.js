@@ -19,6 +19,7 @@ import company from './assets/icons/company.png';
 import campanyGreen from './assets/icons/company-green.png';
 import deal from './assets/icons/deal.png';
 import dealGreen from './assets/icons/deal-green.png';
+import SupplyDetails from './pages/SupplyDetails';
 
 const DemandStack = createStackNavigator(
   {
@@ -32,6 +33,7 @@ const DemandStack = createStackNavigator(
       screen: CreateDemand,
     },
     DemandSuppliesList,
+    SupplyDetails,
   },
   { headerMode: 'none' }
 );

@@ -20,6 +20,7 @@ export default function DemandSuppliesList({ navigation }) {
 
   useEffect(() => {
     async function getDemandSuppliesList() {
+      await api.post(`agromatch/${demand_id}`);
       const response = await api.get(`demand/${demand_id}/supplies`);
       setDemandSuppliesList(response.data.supplies_id);
 
@@ -32,7 +33,11 @@ export default function DemandSuppliesList({ navigation }) {
   function Supplyitem(item) {
     console.log(item);
     return (
-      <SupplyContent>
+      <SupplyContent
+        onPress={() =>
+          navigation.push('SupplyDetails', { supply_id: item._id, demand_id })
+        }
+      >
         <PhotoView source={{ uri: item.producer_id.avatar_id.url }} />
         <InfoView>
           <NameText>{item.producer_id.name}</NameText>

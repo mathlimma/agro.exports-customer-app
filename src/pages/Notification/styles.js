@@ -3,24 +3,23 @@ import { FlatList } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: white;
+  background-color: #fff;
 `;
 
 export const Content = styled.View`
-  padding: 20px;
+  align-items: center;
 `;
 
 export const NotificationButton = styled.TouchableOpacity`
-  padding: 10px;
   flex-direction: row;
   align-items: center;
   border-bottom-width: 1px;
-  border-bottom-color: #707070;
+  border-bottom-color: rgba(112, 112, 112, 1);
+  padding: 20px;
 `;
 
 export const NotificationTextView = styled.View`
-  justify-content: center;
-  align-items: center;
+  margin-left: 10px;
 `;
 
 export const ProducerImage = styled.Image`
@@ -51,3 +50,12 @@ export const ProductText = styled.Text`
 `;
 
 export const NotificationList = styled(FlatList)``;
+
+export const NotificationText = styled.Text`
+  font-size: 16px;
+`;
+
+export const TimeText = styled.Text`
+  font-size: 12px;
+  color: #707070;
+`;

@@ -17,9 +17,9 @@ export const ProductView = styled.TouchableOpacity`
 `;
 
 export const PhotoView = styled.Image`
-  width: 84px;
-  height: 84px;
-  border-radius: 42px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
   margin-right: 10px;
 `;
 

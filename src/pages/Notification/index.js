@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AppBar from '../../components/AppBar';
 import api from '../../services/api';
 import Loading from '../../components/Loading';
+import WhatsAppLink from '../../components/WhatsAppLink';
 import {
   Container,
   Content,
@@ -10,36 +11,45 @@ import {
   NotificationText,
   NotificationTextView,
   NotificationList,
+  TimeText,
 } from './styles';
 
-export default function AddSupply({ navigation }) {
+export default function Notification({ navigation }) {
   const [notification, setNotification] = useState([]);
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
     async function getNotifications() {
       try {
-        // const response = await api.get('/product'); // pegar notificaçoes aqui
-
         const response = {
           data: [
             {
-              text: ' joaozinho recusou seu pedido',
+              id: 1,
+              text: 'Matheus recusou seu pedido',
               photo_id: {
-                url: 'jhdsfksdhfdsh',
+                url:
+                  'https://a02ea2f0.ngrok.io/files/7c60ce66e2064b73c7c161e0f9f978f7.jpg',
               },
+              time: '2 horas atrás',
+              tel: '8189341719',
             },
             {
-              text: ' Mariazinha aceitou seu pedido',
+              id: 2,
+              text: 'Mariazinha aceitou seu pedido',
               photo_id: {
-                url: 'jhdsfksdhfdsh',
+                url:
+                  'https://a02ea2f0.ngrok.io/files/7c60ce66e2064b73c7c161e0f9f978f7.jpg',
               },
+              time: '3 horas atrás',
             },
             {
-              text: ' aguinha aceitou seu pedido',
+              id: 3,
+              text: 'Emmanuel aceitou seu pedido',
               photo_id: {
-                url: 'jhdsfksdhfdsh',
+                url:
+                  'https://a02ea2f0.ngrok.io/files/7c60ce66e2064b73c7c161e0f9f978f7.jpg',
               },
+              time: '4 horas atrás',
             },
           ],
         };
@@ -52,17 +62,21 @@ export default function AddSupply({ navigation }) {
 
     getNotifications();
   }, []);
-  function handlePress(item) {
+  async function handlePress(item) {
     // abrir whatsapp aqui
+    WhatsAppLink(item.tel);
   }
 
   function NotificationItem(item) {
-    <NotificationButton onPress={() => handlePress(item)}>
-      <ProducerImage source={{ uri: item.photo_id.url }} />
-      <NotificationTextView>
-        <NotificationText> {item.text}</NotificationText>
-      </NotificationTextView>
-    </NotificationButton>;
+    return (
+      <NotificationButton onPress={() => handlePress(item)}>
+        <ProducerImage source={{ uri: item.photo_id.url }} />
+        <NotificationTextView>
+          <NotificationText>{item.text}</NotificationText>
+          <TimeText>{item.time}</TimeText>
+        </NotificationTextView>
+      </NotificationButton>
+    );
   }
 
   return (
@@ -76,7 +90,7 @@ export default function AddSupply({ navigation }) {
             showsVerticalScrollIndicator={false}
             data={notification}
             renderItem={({ item }) => NotificationItem(item)}
-            keyExtractor={item => String(item._id)}
+            keyExtractor={item => String(item.id)}
           />
         </Content>
       )}

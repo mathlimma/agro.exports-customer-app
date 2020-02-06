@@ -20,15 +20,15 @@ import {
 } from './styles';
 
 export default function SupplyDetails({ navigation }) {
+  const { supply_id, demand_id } = navigation.state.params;
   const [supply, setSupply] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function getSupply() {
       try {
-        const { supply_id } = navigation.state.params;
-
         const response = await api.get(`supply/${supply_id}`);
-        getSupply(response.data);
+        console.log(response.data);
+        setSupply(response.data);
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -41,6 +41,12 @@ export default function SupplyDetails({ navigation }) {
   const priceFormatted = useMemo(() => String(supply.price).replace('.', ','), [
     supply.price,
   ]);
+
+  async function handleNegociation() {
+    const response = await api.put(`negociation/${supply_id}`, { demand_id });
+    // whatapp
+    console.log(response);
+  }
 
   return (
     <Container>
@@ -59,8 +65,7 @@ export default function SupplyDetails({ navigation }) {
           </ProductView>
 
           <ProducerDetailsView>
-            <Producer
-              Photo
+            <ProducerPhoto
               source={{
                 uri: supply.producer_id.avatar_id.url,
               }}
@@ -80,7 +85,7 @@ export default function SupplyDetails({ navigation }) {
             <SupplyDetailsText>Preço: R${priceFormatted}</SupplyDetailsText>
           </SupplyDetailsView>
 
-          <NegociationButton color="#01A643">
+          <NegociationButton color="#01A643" onPress={handleNegociation}>
             <NegociationButtonText color="#01A643">
               Iniciar Negociação
             </NegociationButtonText>
