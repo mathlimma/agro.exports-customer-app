@@ -1,22 +1,51 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Container } from './styles';
-import * as AuthActions from '../../store/modules/auth/actions';
+import { AsyncStorage } from 'react-native';
+import api from '../../services/api';
+import {
+  Container,
+  LogoView,
+  LogoImage,
+  AuthView,
+  AuthButton,
+  AuthButtonText,
+  AuthViewText,
+} from './styles';
 
-export default function App() {
-  const dispatch = useDispatch();
-
+export default function Auth({ navigation }) {
   useEffect(() => {
-    function signInFacebook() {
-      dispatch(AuthActions.signInFacebookRequest());
+    async function redirect() {
+      const token = await AsyncStorage.getItem('@token');
+
+      if (token) {
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+        navigation.navigate('App');
+      }
     }
 
-    function signInGoogle() {
-      dispatch(AuthActions.signInGoogleRequest());
-    }
-    signInGoogle();
-    // signInFacebook();
-  });
+    redirect();
+  }, []);
 
-  return <Container />;
+  function handleNavigationLogin() {
+    navigation.navigate('Login');
+  }
+
+  return (
+    <Container tintcolor="#005D22">
+      <LogoView>
+        <LogoImage />
+      </LogoView>
+
+      <AuthView>
+        <AuthButton onPress={handleNavigationLogin}>
+          <AuthButtonText>Login</AuthButtonText>
+        </AuthButton>
+
+        <AuthViewText>Ainda não possui conta?</AuthViewText>
+
+        <AuthButton>
+          <AuthButtonText>Cadastre-se</AuthButtonText>
+        </AuthButton>
+      </AuthView>
+    </Container>
+  );
 }

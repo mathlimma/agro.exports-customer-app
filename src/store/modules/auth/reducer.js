@@ -1,44 +1,30 @@
 import produce from 'immer';
-
-import {
-  SIGN_IN_FACEBOOK_FAILURE,
-  SIGN_IN_FACEBOOK_REQUEST,
-  SIGN_IN_FACEBOOK_SUCCESS,
-  SIGN_IN_GOOGLE_FAILURE,
-  SIGN_IN_GOOGLE_REQUEST,
-  SIGN_IN_GOOGLE_SUCCESS,
-} from '../types';
+import { SIGN_IN_REQUEST, SIGN_IN_FAILURE, SIGN_IN_SUCCESS } from '../types';
 
 const INITIAL_STATE = {
+  loading: false,
+  token: '',
   signed: false,
-  token: null,
 };
 
-export default function AuthReducer(state = INITIAL_STATE, action) {
+export default function Auth(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      case SIGN_IN_FACEBOOK_REQUEST: {
+      case SIGN_IN_REQUEST: {
+        draft.loading = true;
         break;
       }
-      case SIGN_IN_FACEBOOK_SUCCESS: {
+      case SIGN_IN_SUCCESS: {
         draft.signed = true;
         draft.token = action.payload.token;
+        draft.loading = false;
         break;
       }
-      case SIGN_IN_FACEBOOK_FAILURE: {
+      case SIGN_IN_FAILURE: {
+        draft.loading = false;
         break;
       }
-      case SIGN_IN_GOOGLE_REQUEST: {
-        break;
-      }
-      case SIGN_IN_GOOGLE_SUCCESS: {
-        draft.signed = true;
-        draft.token = action.payload.token;
-        break;
-      }
-      case SIGN_IN_GOOGLE_FAILURE: {
-        break;
-      }
+
       default:
     }
   });
