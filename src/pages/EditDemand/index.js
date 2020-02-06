@@ -62,6 +62,8 @@ export default function EditDemand({ navigation }) {
         description,
       };
 
+      console.log(attDemand);
+
       const request = await api.put(`demand/${_id}`, attDemand);
       setCheck(true);
       setTimeout(() => navigation.pop(), 1200);
