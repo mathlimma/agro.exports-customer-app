@@ -14,13 +14,12 @@ import Supply from './pages/Supply';
 import AddSupply from './pages/AddSupply';
 import CreateSupply from './pages/CreateSupply';
 import Register from './pages/Register';
-import saveMoney from './assets/icons/save-money.png';
-import saveMoneyGreen from './assets/icons/money-green.png';
-import sprout from './assets/icons/sprout.png';
-import sproutGreen from './assets/icons/sprout-green.png';
-
-import farmer from './assets/icons/farmer.png';
-import farmerGreen from './assets/icons/farmer-green.png';
+import bell from './assets/icons/bell.png';
+import bellGreen from './assets/icons/bell-green.png';
+import company from './assets/icons/company.png';
+import campanyGreen from './assets/icons/company-green.png';
+import deal from './assets/icons/deal.png';
+import dealGreen from './assets/icons/deal-green.png';
 
 const SupplyStack = createStackNavigator(
   {
@@ -56,8 +55,8 @@ const App = createBottomTabNavigator(
       navigationOptions: {
         tabBarIcon: ({ focused }) => (
           <Image
-            source={focused ? saveMoneyGreen : saveMoney}
-            style={{ width: 35, height: 35 }}
+            source={focused ? dealGreen : deal}
+            style={{ width: 38, height: 38 }}
           />
         ),
       },
@@ -67,8 +66,8 @@ const App = createBottomTabNavigator(
       navigationOptions: {
         tabBarIcon: ({ focused }) => (
           <Image
-            source={focused ? farmerGreen : farmer}
-            style={{ width: 38, height: 38 }}
+            source={focused ? campanyGreen : company}
+            style={{ width: 30, height: 30 }}
           />
         ),
       },
@@ -78,8 +77,8 @@ const App = createBottomTabNavigator(
       navigationOptions: {
         tabBarIcon: ({ focused }) => (
           <Image
-            source={focused ? sproutGreen : sprout}
-            style={{ width: 33, height: 33 }}
+            source={focused ? bellGreen : bell}
+            style={{ width: 30, height: 30 }}
           />
         ),
       },
