@@ -1,31 +1,17 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.TouchableOpacity`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 300px;
-  height: 95px;
-  background: #83ed7b99;
-  padding: 10px;
-  margin-top: 20px;
-  border-radius: 5px;
-`;
+export const Container = styled.View``;
 
-export const ContentView = styled.View`
-  align-items: center;
-`;
+export const ProductView = styled.View``;
 
-export const ContentPhoto = styled.Image`
-  height: 56px;
-  width: 56px;
-  border-radius: 28px;
-`;
+export const PhotoView = styled.View``;
 
-export const ContentName = styled.Text``;
+export const InfoView = styled.View``;
 
-export const ArrowView = styled.View``;
+export const NameText = styled.View``;
 
-export const ArrowImage = styled.Image.attrs(props => ({
-  source: props.source,
-}))``;
+export const ActionsView = styled.View``;
+
+export const ActionView = styled.View``;
+
+export const ActionIcon = styled.View``;

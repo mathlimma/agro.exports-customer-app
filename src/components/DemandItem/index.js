@@ -1,50 +1,36 @@
 import React from 'react';
-import { Image } from 'react-native';
-import backArrow from '../../assets/icons/back.png';
-import frontArrow from '../../assets/icons/front.png';
 import {
   Container,
-  ContentView,
-  ContentPhoto,
-  ContentName,
-  ArrowView,
-  ArrowImage,
+  ProductView,
+  PhotoView,
+  InfoView,
+  NameText,
+  ActionsView,
+  ActionView,
+  ActionIcon,
 } from './styles';
+import trash from '../../assets/icons/trash.png';
+import edit from '../../assets/icons/edit.png';
 
-export default function DemandItem({
-  navigation,
-  product_id: product,
-  ece_id: ece,
-  _id,
-}) {
-  function handleNavigation() {
-    navigation.push('DemandDetails', { demand_id: _id });
-  }
-
+export default function DemandItem({ item }) {
   return (
-    <Container key={_id} onPress={handleNavigation}>
-      <ContentView>
-        <ContentPhoto
-          source={{
-            uri: product.photo_id.url,
-          }}
-        />
-        <ContentName>{product.name}</ContentName>
-      </ContentView>
+    <Container>
+      <ProductView>
+        <PhotoView source={{ uri: item.product_id.photo_id.url }} />
+        <InfoView>
+          <NameText>{item.product_id.name}</NameText>
+        </InfoView>
+      </ProductView>
 
-      <ArrowView>
-        <ArrowImage source={backArrow} />
-        <ArrowImage source={frontArrow} />
-      </ArrowView>
+      <ActionsView>
+        <ActionView>
+          <ActionIcon source={edit} />
+        </ActionView>
 
-      <ContentView>
-        <ContentPhoto
-          source={{
-            uri: ece.avatar_id.url,
-          }}
-        />
-        <ContentName>{ece.name}</ContentName>
-      </ContentView>
+        <ActionView>
+          <ActionIcon source={trash} />
+        </ActionView>
+      </ActionsView>
     </Container>
   );
 }
