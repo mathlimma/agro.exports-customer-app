@@ -19,12 +19,12 @@ import {
   ProductText,
 } from './styles';
 
-export default function CreateSupply({ navigation }) {
+export default function CreateDemand({ navigation }) {
   const { item } = navigation.state.params;
   const [description, setDescription] = useState('');
-  const [location, setLocation] = useState(null);
   const [price, setPrice] = useState('');
   const [amount, setAmount] = useState('');
+  const [distance, setDistance] = useState('');
 
   async function getLocationAsync() {
     const { status } = await Permissions.askAsync(Permissions.LOCATION);
@@ -41,7 +41,6 @@ export default function CreateSupply({ navigation }) {
   }
 
   function ProductItem() {
-    console.log(item);
     return (
       <ProductButton>
         <ProductImage source={{ uri: item.photo_id.url }} />
@@ -59,15 +58,18 @@ export default function CreateSupply({ navigation }) {
       const priceNum = Number(price);
       const newDemand = {
         product_id: item._id,
-        active,
         description,
         price: priceNum,
-
+        kg_amount: Number(amount),
         latitude: coords.latitude,
         longitude: coords.longitude,
+        max_distance_km: Number(distance),
       };
+      console.log('newdemand');
+      console.log(newDemand);
 
       const request = await api.post('/demand', newDemand);
+      console.log(request);
     } catch (err) {
       console.log(err.request);
     }
@@ -88,7 +90,7 @@ export default function CreateSupply({ navigation }) {
         </InputWrapper>
         <InputWrapper>
           <Input
-            placeholder="Preço (R$)"
+            placeholder="Preço máximo (R$)"
             onChangeText={setPrice}
             value={price}
           />
@@ -99,6 +101,14 @@ export default function CreateSupply({ navigation }) {
             placeholder="Quantidade (kg)"
             onChangeText={setAmount}
             value={amount}
+          />
+        </InputWrapper>
+
+        <InputWrapper>
+          <Input
+            placeholder="Distância máxima (km)"
+            onChangeText={setDistance}
+            value={distance}
           />
         </InputWrapper>
 

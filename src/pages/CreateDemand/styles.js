@@ -1,13 +1,10 @@
 import styled from 'styled-components/native';
-import { KeyboardAvoidingView } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
 `;
 
-export const Content = styled(KeyboardAvoidingView).attrs({
-  behavior: 'height',
-})`
+export const Content = styled.View`
   justify-content: center;
   align-items: center;
 `;
@@ -26,25 +23,11 @@ export const Input = styled.TextInput.attrs({
   width: 290px;
 `;
 
-export const CreateSupplyButtonText = styled.Text`
+export const CreateDemandButtonText = styled.Text`
   color: #01a643;
 `;
 
-export const SupplyActiveButtonText = styled.Text`
-  color: ${props => (!props.active ? '#fff' : '#01a643')};
-`;
-
-export const SupplyDisabledButtonText = styled.Text`
-  color: ${props => (props.active ? '#fff' : '#01a643')};
-`;
-
-export const TextContent = styled.Text`
-  margin-top: 20px;
-  font-size: 19px;
-  font-weight: bold;
-`;
-
-export const CreateSupplyButton = styled.TouchableOpacity`
+export const CreateDemandButton = styled.TouchableOpacity`
   margin-top: 50px;
   background: #fff;
   justify-content: center;
@@ -55,30 +38,10 @@ export const CreateSupplyButton = styled.TouchableOpacity`
   border: 1px solid #01a643;
 `;
 
-export const SupplyActiveButton = styled.TouchableOpacity`
-  margin-top: 50px;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  height: 38px;
-  border-radius: 5px;
-  border: 1px solid #01a643;
-  background-color: ${props => (props.active ? '#01a643' : '#fff')};
-`;
-
-export const SupplyDisabledButton = styled.TouchableOpacity`
-  margin-top: 50px;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  height: 38px;
-  border-radius: 5px;
-  border: 1px solid #01a643;
-  background-color: ${props => (!props.active ? '#01a643' : '#fff')};
-`;
-
-export const SupplyActiveButtonView = styled.View`
-  flex-direction: row;
+export const TextContent = styled.Text`
+  margin-top: 20px;
+  font-size: 19px;
+  font-weight: bold;
 `;
 
 export const ProductButton = styled.View`
