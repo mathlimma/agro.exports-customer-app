@@ -1,34 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import AppBar from '../../components/AppBar';
-import SupplyItem from '../../components/SupplyItem';
+import DemandItem from '../../components/DemandItem';
 import api from '../../services/api';
 import Loading from '../../components/Loading';
 
 import {
   Container,
   Content,
-  CreateSupplyButton,
-  CreateSupplyText,
-  SupplyList,
-  SupplyText,
+  CreateDemandButton,
+  CreateDemandText,
+  DemandList,
+  DemandText,
   ButtonView,
   Separator,
   Icon,
 } from './styles';
 
-export default function Supply({ navigation }) {
+export default function Demand({ navigation }) {
   const [demands, setDemands] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getSupplies() {
       try {
-        const response = await api.get('/producer/supplies');
+        const response = await api.get('/ece/demands');
 
-        setSupplies(response.data);
+        setDemands(response.data);
         setLoading(false);
       } catch (error) {
-        console.log(error);
+        setLoading(false);
+        console.log(error.request);
       }
     }
 
@@ -44,13 +45,13 @@ export default function Supply({ navigation }) {
           <ButtonView>
             <CreateDemandButton onPress={() => navigation.push('AddDemand')}>
               <Icon name="plus" size={25} color="#fff" />
-              <CreateDemandText>Adicionar Oferta</CreateDemandText>
+              <CreateDemandText>Criar Demanda</CreateDemandText>
             </CreateDemandButton>
           </ButtonView>
-          <SupplyText>Suas Demandas</SupplyText>
-          <SupplyList
+          <DemandText>Suas Demandas</DemandText>
+          <DemandList
             data={demands}
-            renderItem={({ item }) => <SupplyItem {...item} key={item._id} />}
+            renderItem={({ item }) => <DemandItem {...item} key={item._id} />}
             keyExtractor={item => String(item._id)}
             ItemSeparatorComponent={() => <Separator />}
           />

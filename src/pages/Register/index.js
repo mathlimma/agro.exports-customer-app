@@ -26,7 +26,7 @@ export default function Register() {
   async function handleRegister({ navigation }) {
     try {
       if (name && email && password && sex && tel && cpf) {
-        const response = await api.post('producer/signup', {
+        const response = await api.post('ece/signup', {
           name,
           email,
           password,
@@ -34,11 +34,11 @@ export default function Register() {
           tel,
           cpf,
         });
-        const { producer, token } = response.data;
+        const { ece, token } = response.data;
         setloading(false);
         api.defaults.headers.Authorization = `Bearer ${token}`;
         await AsyncStorage.setItem('@token', token);
-        navigation.navigate('App', { producer });
+        navigation.navigate('App', { ece });
       }
     } catch (error) {
       setloading(false);

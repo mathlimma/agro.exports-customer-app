@@ -15,7 +15,7 @@ export const ButtonView = styled.View`
   padding-top: 20px;
 `;
 
-export const CreateSupplyButton = styled.TouchableOpacity`
+export const CreateDemandButton = styled.TouchableOpacity`
   height: 54px;
   width: 300px;
   border-radius: 5px;
@@ -26,18 +26,18 @@ export const CreateSupplyButton = styled.TouchableOpacity`
   background-color: #01a643;
 `;
 
-export const CreateSupplyText = styled.Text`
+export const CreateDemandText = styled.Text`
   font-size: 20px;
   color: white;
 `;
 
-export const SupplyText = styled.Text`
+export const DemandText = styled.Text`
   padding-top: 50px;
   margin-bottom: 10px;
   font-size: 20px;
 `;
 
-export const SupplyList = styled(FlatList).attrs({
+export const DemandList = styled(FlatList).attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
 })`
@@ -45,8 +45,7 @@ export const SupplyList = styled(FlatList).attrs({
 `;
 
 export const Separator = styled.View`
-  height: 280px;
-  width: 10px;
+  flex: 1;
 `;
 
 export const Icon = styled(Feather)`

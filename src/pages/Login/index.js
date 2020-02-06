@@ -23,12 +23,12 @@ export default function Login({ navigation }) {
     if (email && password) {
       try {
         setloading(true);
-        const response = await api.post('producer/signin', { email, password });
-        const { producer, token } = response.data;
+        const response = await api.post('ece/signin', { email, password });
+        const { ece, token } = response.data;
         setloading(false);
         api.defaults.headers.Authorization = `Bearer ${token}`;
         await AsyncStorage.setItem('@token', token);
-        navigation.navigate('App', { producer });
+        navigation.navigate('App', { ece });
       } catch (err) {
         console.log(err.request);
         setloading(false);

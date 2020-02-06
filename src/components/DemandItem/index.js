@@ -12,13 +12,13 @@ import {
 import trash from '../../assets/icons/trash.png';
 import edit from '../../assets/icons/edit.png';
 
-export default function DemandItem({ item }) {
+export default function DemandItem({ product_id }) {
   return (
     <Container>
       <ProductView>
-        <PhotoView source={{ uri: item.product_id.photo_id.url }} />
+        <PhotoView source={{ uri: product_id.photo_id.url }} />
         <InfoView>
-          <NameText>{item.product_id.name}</NameText>
+          <NameText>{product_id.name}</NameText>
         </InfoView>
       </ProductView>
 

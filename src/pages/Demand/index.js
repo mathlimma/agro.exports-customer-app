@@ -11,9 +11,9 @@ export default function Demand({ navigation }) {
   useEffect(() => {
     async function getDemands() {
       try {
-        const response = await api.get('producer/demands');
-
-        setDemands(response.data.demands_id);
+        const response = await api.get('ece/demands');
+        console.log(response.data);
+        setDemands(response.data);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -26,7 +26,7 @@ export default function Demand({ navigation }) {
 
   return (
     <Container>
-      <AppBar title="Demandas" />
+      <AppBar title="Demandasss" />
       {loading ? (
         <Loading />
       ) : (
