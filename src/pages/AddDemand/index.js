@@ -37,7 +37,6 @@ export default function AddSupply({ navigation }) {
   }
 
   function ProductItem(item) {
-    console.log(item);
     return (
       <ProductButton onPress={() => handlePress(item)}>
         <ProductImage source={{ uri: item.photo_id.url }} />

@@ -17,6 +17,8 @@ import {
   SupplyDetailsText,
   NegociationButton,
   NegociationButtonText,
+  TextData,
+  TextDataMoney,
 } from './styles';
 
 export default function SupplyDetails({ navigation }) {
@@ -27,7 +29,7 @@ export default function SupplyDetails({ navigation }) {
     async function getSupply() {
       try {
         const response = await api.get(`supply/${supply_id}`);
-        console.log(response.data);
+
         setSupply(response.data);
         setLoading(false);
       } catch (error) {
@@ -80,9 +82,12 @@ export default function SupplyDetails({ navigation }) {
 
           <SupplyDetailsView>
             <SupplyDetailsText>
-              Localização: {supply.producer_id.city || 'Não Informado'}
+              Localização:{' '}
+              <TextData> {supply.producer_id.city || 'Não Informado'}</TextData>
             </SupplyDetailsText>
-            <SupplyDetailsText>Preço: R${priceFormatted}</SupplyDetailsText>
+            <SupplyDetailsText>
+              Preço: <TextDataMoney>R${priceFormatted}</TextDataMoney>
+            </SupplyDetailsText>
           </SupplyDetailsView>
 
           <NegociationButton color="#01A643" onPress={handleNegociation}>

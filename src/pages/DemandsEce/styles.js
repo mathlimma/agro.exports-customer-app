@@ -33,15 +33,14 @@ export const CreateDemandText = styled.Text`
 `;
 
 export const DemandText = styled.Text`
-  padding-top: 50px;
-  margin-bottom: 10px;
+  margin-top: 20px;
   font-size: 20px;
 `;
 
 export const DemandList = styled(FlatList).attrs({
   showsHorizontalScrollIndicator: false,
 })`
-  padding: 0 10px;
+  padding: 20px 10px;
 `;
 
 export const Separator = styled.View`

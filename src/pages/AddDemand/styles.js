@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -14,8 +14,10 @@ export const ProductButton = styled.TouchableOpacity`
   padding: 10px;
   flex-direction: row;
   align-items: center;
-  border-bottom-width: 1px;
+  border-bottom-width: ${StyleSheet.hairlineWidth};
   border-bottom-color: #707070;
+
+  margin-bottom: 5px;
 `;
 
 export const ProductTextView = styled.View`
@@ -27,15 +29,13 @@ export const ProductImage = styled.Image`
   height: 50px;
   width: 50px;
   border-radius: 25px;
-  border: 1px solid #707070;
+  border: 1px solid #01a643;
 `;
 
 export const AddSupplyView = styled.View`
   justify-content: center;
   align-items: center;
   padding: 15px;
-  border-bottom-color: #707070;
-  border-bottom-width: 1px;
 `;
 
 export const AddSupplyText = styled.Text`

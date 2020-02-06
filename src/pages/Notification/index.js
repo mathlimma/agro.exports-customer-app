@@ -26,7 +26,7 @@ export default function Notification({ navigation }) {
           data: [
             {
               id: 1,
-              text: 'Matheus recusou seu pedido',
+              text: 'Matheus aceitou seu pedido',
               photo_id: {
                 url:
                   'https://a02ea2f0.ngrok.io/files/7c60ce66e2064b73c7c161e0f9f978f7.jpg',
@@ -36,7 +36,7 @@ export default function Notification({ navigation }) {
             },
             {
               id: 2,
-              text: 'Mariazinha aceitou seu pedido',
+              text: 'Matheus aceitou seu pedido',
               photo_id: {
                 url:
                   'https://a02ea2f0.ngrok.io/files/7c60ce66e2064b73c7c161e0f9f978f7.jpg',
@@ -46,7 +46,7 @@ export default function Notification({ navigation }) {
             },
             {
               id: 3,
-              text: 'Emmanuel aceitou seu pedido',
+              text: 'Matheus aceitou seu pedido',
               photo_id: {
                 url:
                   'https://a02ea2f0.ngrok.io/files/7c60ce66e2064b73c7c161e0f9f978f7.jpg',

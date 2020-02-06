@@ -98,7 +98,7 @@ export default function CreateDemand({ navigation }) {
           </InputWrapper>
           <InputWrapper>
             <Input
-              placeholder="Preço máximo (R$)"
+              placeholder="Preço máximo/kg (R$)"
               onChangeText={setPrice}
               value={price}
               keyboardType="decimal-pad"

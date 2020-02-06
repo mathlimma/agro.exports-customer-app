@@ -33,8 +33,9 @@ export const InfoView = styled.View`
 
 export const NameText = styled.Text`
   font-size: 14px;
+  font-weight: bold;
 `;
 export const CityText = styled.Text`
-  font-size: 14px;
+  font-size: 12px;
   color: #707070;
 `;

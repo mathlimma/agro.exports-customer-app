@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
-
+import Check from '../../components/Check';
 import AppBar from '../../components/AppBar';
 import {
   Container,
@@ -17,30 +17,31 @@ import {
 } from './styles';
 
 export default function EditDemand({ navigation }) {
-  const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [amount, setAmount] = useState('');
   const [distance, setDistance] = useState('');
-
+  const [description, setDescription] = useState('');
+  const [check, setCheck] = useState(false);
+  const [item, setItem] = useState({});
+  const [loading, setLoading] = useState(true);
   const { _id } = navigation.state.params;
 
   useEffect(() => {
     async function getDemand() {
-      console.log(_id);
       const response = await api.get(`demand/${_id}`);
 
+      setPrice(String(response.data.price));
+      setAmount(String(response.data.kg_amount));
+      setDistance(String(response.data.max_distance_km));
       setDescription(response.data.description);
-      setPrice(response.data.price);
-      setAmount(response.data.kg_amount);
-      setDistance(response.data.max_distance_km);
-      console.log(response.data.max_distance_km);
-      console.log(response.data.price);
+      setItem(response.data.product_id);
+      setLoading(false);
     }
 
     getDemand();
   }, []);
 
-  function ProductItem(item) {
+  function ProductItem() {
     return (
       <ProductButton>
         <ProductImage source={{ uri: item.photo_id.url }} />
@@ -55,16 +56,15 @@ export default function EditDemand({ navigation }) {
     try {
       const priceNum = Number(price);
       const attDemand = {
-        description,
         price: priceNum,
         kg_amount: Number(amount),
         max_distance_km: Number(distance),
+        description,
       };
-      console.log('newdemand');
-      console.log(attDemand);
 
-      const request = await api.put(`/demand/${_id}`, attDemand);
-      console.log(request);
+      const request = await api.put(`demand/${_id}`, attDemand);
+      setCheck(true);
+      setTimeout(() => navigation.pop(), 1200);
     } catch (err) {
       console.log(err.request);
     }
@@ -73,43 +73,51 @@ export default function EditDemand({ navigation }) {
   return (
     <Container>
       <AppBar title="Editar Demanda" />
-      <Content>
-        <TextContent>Preencha os Dados</TextContent>
-        <InputWrapper>
-          <Input
-            placeholder="Descrição"
-            onChangeText={setDescription}
-            value={description}
-          />
-        </InputWrapper>
-        <InputWrapper>
-          <Input
-            placeholder="Preço máximo (R$)"
-            onChangeText={setPrice}
-            value={price}
-          />
-        </InputWrapper>
+      {check ? (
+        <Check />
+      ) : (
+        <Content>
+          <TextContent>Preencha os Dados</TextContent>
+          {!loading && ProductItem()}
+          <InputWrapper>
+            <Input
+              placeholder="Descrição"
+              onChangeText={setDescription}
+              value={description}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <Input
+              placeholder="Preço máximo (R$)"
+              onChangeText={setPrice}
+              value={price}
+              keyboardType="decimal-pad"
+            />
+          </InputWrapper>
 
-        <InputWrapper>
-          <Input
-            placeholder="Quantidade (kg)"
-            onChangeText={setAmount}
-            value={amount}
-          />
-        </InputWrapper>
+          <InputWrapper>
+            <Input
+              placeholder="Quantidade (kg)"
+              onChangeText={setAmount}
+              value={amount}
+              keyboardType="decimal-pad"
+            />
+          </InputWrapper>
 
-        <InputWrapper>
-          <Input
-            placeholder="Distância máxima (km)"
-            onChangeText={setDistance}
-            value={distance}
-          />
-        </InputWrapper>
+          <InputWrapper>
+            <Input
+              placeholder="Distância máxima (km)"
+              onChangeText={setDistance}
+              value={distance}
+              keyboardType="decimal-pad"
+            />
+          </InputWrapper>
 
-        <CreateDemandButton onPress={handleEditDemand}>
-          <CreateDemandButtonText>Editar Demanda</CreateDemandButtonText>
-        </CreateDemandButton>
-      </Content>
+          <CreateDemandButton onPress={handleEditDemand}>
+            <CreateDemandButtonText>Editar Demanda</CreateDemandButtonText>
+          </CreateDemandButton>
+        </Content>
+      )}
     </Container>
   );
 }

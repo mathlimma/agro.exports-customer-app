@@ -9,6 +9,7 @@ import {
   ActionView,
   ActionViewWrapper,
   ActionIcon,
+  HelpText,
 } from './styles';
 import trash from '../../assets/icons/trash.png';
 import edit from '../../assets/icons/edit.png';
@@ -28,6 +29,9 @@ export default function DemandItem({ product_id, navigation, _id }) {
         <PhotoView source={{ uri: product_id.photo_id.url }} />
         <InfoView>
           <NameText>{product_id.name}</NameText>
+          <HelpText>
+            Toque aqui para ver todas as ofertas dessa demanda
+          </HelpText>
         </InfoView>
       </ProductView>
 

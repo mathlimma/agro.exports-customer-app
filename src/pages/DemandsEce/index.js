@@ -37,7 +37,7 @@ function Demand({ navigation, isFocused }) {
   }, [isFocused]);
   return (
     <Container>
-      <AppBar title="Demandas" size="22" />
+      <AppBar title="Demandas" />
       {loading ? (
         <Loading />
       ) : (

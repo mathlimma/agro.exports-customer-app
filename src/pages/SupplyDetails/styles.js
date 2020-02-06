@@ -12,7 +12,7 @@ export const ProductView = styled.View`
   flex-direction: row;
   align-items: center;
   border-bottom-width: 1px;
-  border-bottom-color: #707070;
+  border-bottom-color: #ccc;
   width: 280px;
   padding: 20px 0 15px;
 `;
@@ -25,7 +25,15 @@ export const ProductPhoto = styled.Image`
   border-color: #ccc;
 `;
 export const ProductName = styled.Text`
+  color: #01a643;
   font-size: 22px;
+`;
+export const TextData = styled.Text`
+  color: #ff8181;
+`;
+
+export const TextDataMoney = styled.Text`
+  color: #01a643;
 `;
 export const ProducerDetailsView = styled.View`
   flex-direction: row;
@@ -41,7 +49,9 @@ export const ProducerPhoto = styled.Image`
   border-color: #ccc;
   margin-right: 15px;
 `;
-export const ProducerInfoView = styled.View``;
+export const ProducerInfoView = styled.View`
+  flex: 1;
+`;
 export const ProducerName = styled.Text`
   font-size: 22px;
 `;
@@ -55,6 +65,7 @@ export const SupplyDetailsView = styled.View`
 `;
 export const SupplyDetailsText = styled.Text`
   margin-bottom: 5px;
+  font-weight: bold;
 `;
 export const NegociationButton = styled.TouchableOpacity`
   justify-content: center;
