@@ -51,7 +51,9 @@ export default function Demand({ navigation }) {
           <DemandText>Suas Demandas</DemandText>
           <DemandList
             data={demands}
-            renderItem={({ item }) => <DemandItem {...item} key={item._id} />}
+            renderItem={({ item }) => (
+              <DemandItem navigation={navigation} {...item} key={item._id} />
+            )}
             keyExtractor={item => String(item._id)}
             ItemSeparatorComponent={() => <Separator />}
           />
