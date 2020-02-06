@@ -10,6 +10,8 @@ import Notification from './pages/Notification';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
 import DemandEce from './pages/DemandsEce';
+import AddDemand from './pages/AddDemand';
+import CreateDemand from './pages/CreateDemand';
 
 import bell from './assets/icons/bell.png';
 import bellGreen from './assets/icons/bell-green.png';
@@ -22,6 +24,12 @@ const DemandStack = createStackNavigator(
   {
     DemandEce: {
       screen: DemandEce,
+    },
+    AddDemand: {
+      screen: AddDemand,
+    },
+    CreateDemand: {
+      screen: CreateDemand,
     },
   },
   { headerMode: 'none' }

@@ -19,7 +19,7 @@ export default function AddSupply({ navigation }) {
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
-    async function getSupplies() {
+    async function getProducts() {
       try {
         const response = await api.get('/product');
 
@@ -30,10 +30,10 @@ export default function AddSupply({ navigation }) {
       }
     }
 
-    getSupplies();
+    getProducts();
   }, []);
   function handlePress(item) {
-    navigation.push('CreateSupply', { item });
+    navigation.push('CreateDemand', { item });
   }
 
   function ProductItem(item) {
@@ -50,7 +50,7 @@ export default function AddSupply({ navigation }) {
 
   return (
     <Container>
-      <AppBar title="Adicionar Oferta" />
+      <AppBar title="Adicionar Demanda" />
       {loading ? (
         <Loading />
       ) : (
