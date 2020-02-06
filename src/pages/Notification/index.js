@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AppBar from '../../components/AppBar';
 import api from '../../services/api';
+import image from '../../assets/images/pp.jpeg';
 import Loading from '../../components/Loading';
 import WhatsAppLink from '../../components/WhatsAppLink';
 import {
@@ -41,6 +42,7 @@ export default function Notification({ navigation }) {
                   'https://a02ea2f0.ngrok.io/files/7c60ce66e2064b73c7c161e0f9f978f7.jpg',
               },
               time: '3 horas atrás',
+              tel: '8189341719',
             },
             {
               id: 3,
@@ -50,6 +52,7 @@ export default function Notification({ navigation }) {
                   'https://a02ea2f0.ngrok.io/files/7c60ce66e2064b73c7c161e0f9f978f7.jpg',
               },
               time: '4 horas atrás',
+              tel: '8189341719',
             },
           ],
         };
@@ -70,7 +73,7 @@ export default function Notification({ navigation }) {
   function NotificationItem(item) {
     return (
       <NotificationButton onPress={() => handlePress(item)}>
-        <ProducerImage source={{ uri: item.photo_id.url }} />
+        <ProducerImage source={image} />
         <NotificationTextView>
           <NotificationText>{item.text}</NotificationText>
           <TimeText>{item.time}</TimeText>

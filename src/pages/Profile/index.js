@@ -106,7 +106,7 @@ export default function Profile({ navigation }) {
                 color="#808080"
                 style={{ marginRight: 5 }}
               />
-              <Input value={producer.cel} />
+              <Input value={String(producer.tel)} />
               <MaterialIcons name="edit" size={15} color="#808080" />
             </InputWrapper>
           </ProfileView>

@@ -29,6 +29,8 @@ export const PhotoImage = styled.Image`
   width: 85px;
   height: 85px;
   border-radius: 42.5px;
+  border-color: #01a643;
+  border-width: 1px;
 `;
 
 export const InputWrapper = styled.View`

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { withNavigationFocus } from 'react-navigation';
 import AppBar from '../../components/AppBar';
 import DemandItem from '../../components/DemandItem';
 import api from '../../services/api';
 import Loading from '../../components/Loading';
-
 import {
   Container,
   Content,
@@ -16,7 +16,7 @@ import {
   Icon,
 } from './styles';
 
-export default function Demand({ navigation }) {
+function Demand({ navigation, isFocused }) {
   const [demands, setDemands] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -34,7 +34,7 @@ export default function Demand({ navigation }) {
     }
 
     getSupplies();
-  }, []);
+  }, [isFocused]);
   return (
     <Container>
       <AppBar title="Demandas" size="22" />
@@ -62,3 +62,5 @@ export default function Demand({ navigation }) {
     </Container>
   );
 }
+
+export default withNavigationFocus(Demand);

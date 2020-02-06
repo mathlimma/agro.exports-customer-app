@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import api from '../../services/api';
-
+import Check from '../../components/Check';
 import AppBar from '../../components/AppBar';
 import {
   Container,
@@ -25,7 +25,7 @@ export default function CreateDemand({ navigation }) {
   const [price, setPrice] = useState('');
   const [amount, setAmount] = useState('');
   const [distance, setDistance] = useState('');
-
+  const [check, setCheck] = useState(false);
   async function getLocationAsync() {
     const { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== 'granted') {
@@ -50,7 +50,12 @@ export default function CreateDemand({ navigation }) {
       </ProductButton>
     );
   }
-
+  function clearFields() {
+    setDescription('');
+    setPrice('');
+    setAmount('');
+    setDistance('');
+  }
   async function handleCreateDemand() {
     try {
       const { coords } = await getLocationAsync();
@@ -65,57 +70,64 @@ export default function CreateDemand({ navigation }) {
         longitude: coords.longitude,
         max_distance_km: Number(distance),
       };
-      console.log('newdemand');
-      console.log(newDemand);
 
       const request = await api.post('/demand', newDemand);
-      console.log(request);
+      setCheck(true);
+      setTimeout(() => navigation.popToTop(), 1200);
     } catch (err) {
       console.log(err.request);
+      clearFields();
     }
   }
 
   return (
     <Container>
       <AppBar title="Criar Demanda" />
-      <Content>
-        <TextContent>Preencha os Dados</TextContent>
-        {ProductItem()}
-        <InputWrapper>
-          <Input
-            placeholder="Descrição"
-            onChangeText={setDescription}
-            value={description}
-          />
-        </InputWrapper>
-        <InputWrapper>
-          <Input
-            placeholder="Preço máximo (R$)"
-            onChangeText={setPrice}
-            value={price}
-          />
-        </InputWrapper>
+      {check ? (
+        <Check />
+      ) : (
+        <Content>
+          <TextContent>Preencha os Dados</TextContent>
+          {ProductItem()}
+          <InputWrapper>
+            <Input
+              placeholder="Descrição"
+              onChangeText={setDescription}
+              value={description}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <Input
+              placeholder="Preço máximo (R$)"
+              onChangeText={setPrice}
+              value={price}
+              keyboardType="decimal-pad"
+            />
+          </InputWrapper>
 
-        <InputWrapper>
-          <Input
-            placeholder="Quantidade (kg)"
-            onChangeText={setAmount}
-            value={amount}
-          />
-        </InputWrapper>
+          <InputWrapper>
+            <Input
+              placeholder="Quantidade (kg)"
+              onChangeText={setAmount}
+              value={amount}
+              keyboardType="decimal-pad"
+            />
+          </InputWrapper>
 
-        <InputWrapper>
-          <Input
-            placeholder="Distância máxima (km)"
-            onChangeText={setDistance}
-            value={distance}
-          />
-        </InputWrapper>
+          <InputWrapper>
+            <Input
+              placeholder="Distância máxima (km)"
+              onChangeText={setDistance}
+              value={distance}
+              keyboardType="decimal-pad"
+            />
+          </InputWrapper>
 
-        <CreateDemandButton onPress={handleCreateDemand}>
-          <CreateDemandButtonText>Criar Demanda</CreateDemandButtonText>
-        </CreateDemandButton>
-      </Content>
+          <CreateDemandButton onPress={handleCreateDemand}>
+            <CreateDemandButtonText>Criar Demanda</CreateDemandButtonText>
+          </CreateDemandButton>
+        </Content>
+      )}
     </Container>
   );
 }
