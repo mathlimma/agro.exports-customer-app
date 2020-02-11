@@ -47,7 +47,6 @@ export default function SupplyDetails({ navigation }) {
   async function handleNegociation() {
     const response = await api.put(`negociation/${supply_id}`, { demand_id });
     // whatapp
-    console.log(response);
   }
 
   return (
