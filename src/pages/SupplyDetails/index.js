@@ -48,9 +48,8 @@ export default function SupplyDetails({ navigation }) {
     try {
       const response = await api.put(`negociation/${supply_id}`, { demand_id });
       // whatapp
-      console.log(response);
-    } catch (error) {
-      console.log(error.request);
+    } catch (err) {
+      console.log(err.request);
     }
   }
 
