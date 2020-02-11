@@ -45,9 +45,13 @@ export default function SupplyDetails({ navigation }) {
   ]);
 
   async function handleNegociation() {
-    const response = await api.put(`negociation/${supply_id}`, { demand_id });
-    // whatapp
-    console.log(response);
+    try {
+      const response = await api.put(`negociation/${supply_id}`, { demand_id });
+      // whatapp
+      console.log(response);
+    } catch (error) {
+      console.log(error.request);
+    }
   }
 
   return (
